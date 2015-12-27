@@ -12,6 +12,11 @@
 		<result property="groupId" column="GROUPID" />
 	</resultMap>
 	
+	<resultMap id="groupResult" type="group" >
+       <id column="group_id" property="groupId" jdbcType="CHAR" />
+       <result column="group_name" property="groupName" jdbcType="CHAR" />
+    </resultMap>
+	
 	<resultMap type="colName" id="colNameResult">
 	    <result property="groupId" column="FK_GROUPID"/>
 	    <result property="tbName" column="TBNAME"/>
@@ -28,7 +33,6 @@
 	    <result property="artSeq" column="ART_SEQ"/>
 	</resultMap>
 	
-	
 	<resultMap id="glaResult" type="gla" >
         <id column="GLA_NO" property="glaNo" jdbcType="CHAR" />
         <result column="NAME" property="name" jdbcType="VARCHAR" />
@@ -43,6 +47,10 @@
 	
 	<sql id="colNameCol">
 	    FK_GROUPID,TBNAME,COLID,NAME
+	</sql>
+	
+	<sql id="groupCol">
+	    GROUP_ID , GROUP_NAME
 	</sql>
 	
 	<sql id="TXInfoCol">
@@ -72,6 +80,12 @@
 				AND USER_NAME = #{userName}
 			</if>
 		</where>
+	</select>
+	
+	<select id="getGroupList" resultMap="groupResult">
+	    SELECT
+	    <include refid="groupCol"/>
+	    FROM TB_GROUP
 	</select>
 	
 	<select id="getColNameList" resultMap="colNameResult">

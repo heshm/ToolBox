@@ -12,6 +12,8 @@ public class Const {
 	
 	public static final String CND_COL_NAME = "cndColName";
 	
+	public static final String GROUP_LIST = "groupList";
+	
 	public static final char valid = '1';
 	
 	public static final char invalid = '0';

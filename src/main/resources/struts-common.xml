@@ -12,6 +12,14 @@
 			<result name="error">/jsp/error.jsp</result>
 			<interceptor-ref name="defaultStack" />
 		</action>
+		
+		<action name="groupChange" class="com.erp.common.action.MainFrameAction"
+			method="groupChg">
+			<result name="success" type="tiles">main.index</result>
+			<result name="error">/jsp/error.jsp</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
 
 		<action name="unauth" class="com.erp.common.action.MainFrameAction"
 			method="unauth">

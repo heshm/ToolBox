@@ -227,6 +227,28 @@
 	        <include refid="cssCol"/>
 	    FROM TB_CSS
 	    WHERE FK_GROUPID = #{groupId}
+	    <if test="brhno != null and brhno != ''">
+	        AND BRHNO = #{brhno}
+	    </if>
+	    <if test="dscrb != null and dscrb != ''">
+	        AND TXID like CONCAT('%',#{txid},'%')
+	    </if>
+	</select>
+	
+	<select id="genArtList" resultMap="artResult">
+	    SELECT
+	       FK_GROUPID, 
+	       FK_TXID, 
+	       FK_ACRLNO, 
+	       SEQ_NO, 
+	       DEBIT_CREDIT, 
+	       GLNO, 
+	       ACCOUNTNO, 
+	       AMT_POINT, 
+	       GL_SEQNO, 
+	       OVERRIDE
+	    FROM VW_GENART
+	    WHERE FK_GROUPID = #{groupId}
 	</select>
 	
 	<update id="deleteOvt">
@@ -333,7 +355,7 @@
         CND2 = #{cnd2,jdbcType=CHAR}, 
         GL_SEQ_NO = #{glSeqNo,jdbcType=CHAR}, 
         STAT = #{stat,jdbcType=CHAR}
-  </insert>
+    </insert>
 	
 	<delete id="deleteCnd">
 	    DELETE FROM TB_CND

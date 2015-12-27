@@ -25,6 +25,8 @@ public class CssAction extends CommonAction {
 	public String search(){
 		Map<String,String> map = new HashMap<String,String>();
 		map.put(Const.GROUPID, CommonUtil.getGroupId(session));
+		map.put("txid", txid);
+		map.put("brhno", brhno);
 		cssList = cssService.getCssList(map);
 		return SUCCESS;
 	}

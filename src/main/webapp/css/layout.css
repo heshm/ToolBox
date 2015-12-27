@@ -65,12 +65,27 @@ body{font-family:Microsoft YaHei,Verdana,Arial,SimSun;color:#666;font-size:14px;
     -webkit-box-shadow: rgba(0,0,0,.6) 0px 2px 12px;
     -moz-box-shadow:  rgba(0,0,0,.6) 0px 2px 12px;;
     padding: 14px 22px;
-    width: 150px;
+    width: 200px;
     position: relative;
     display: none;
 }
 #sign_up_form {
     text-align:left;
+}
+#sign_up_form table{
+	width:100%;
+	margin:auto;
+	border:solid #add9c0; 
+	border-width:1px 0px 0px 1px;
+}
+#sign_up_form table tbody tr{ 
+    border:1px solid #add9c0;
+    height:28px;
+}
+#sign_up_form table tbody td{ 
+    text-align:left;
+	border:solid #add9c0; 
+	border-width:0px 1px 1px 0px; 
 }
 #actions {
     text-align:center;

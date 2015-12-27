@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s"  uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" type="text/css">
@@ -15,7 +13,6 @@ function insertTxInfo(){
 }
 </script>
 </head>
-<body>
 <div class="search" style="text-align:center;"> 
   <s:form name="searchForm" method="post" action="txInfoQuery" namespace="/common" theme="simple">
     <span>交易ID</span>
@@ -73,5 +70,3 @@ function insertTxInfo(){
     </tr>
   </table>
 </div>
-</body>
-</html>

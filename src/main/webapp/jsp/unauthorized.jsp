@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" type="text/css">
 </head>
 <body>
- <p>无权操作</p>
+<div style="text-align:center;">
+  <span>该用户无权操作此功能</span>
+</div>
 </body>
 </html>

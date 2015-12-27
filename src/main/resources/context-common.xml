@@ -35,6 +35,14 @@
 	<bean id="colNameService" class="com.erp.common.serviceImpl.ColNameService">
 		<property name="colNameDAO" ref="colNameDAO" />
 	</bean>
+	
+	<bean id="groupDAO" class="com.erp.common.DAOImpl.GroupDAO">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+
+	<bean id="groupService" class="com.erp.common.serviceImpl.GroupService">
+		<property name="groupDAO" ref="groupDAO" />
+	</bean>
 
 	<bean id="txInfoDAO" class="com.erp.common.DAOImpl.TXInfoDAO">
 		<property name="sqlSession" ref="sqlSession" />

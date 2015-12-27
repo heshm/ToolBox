@@ -73,4 +73,14 @@
         <put-attribute name="main" value="/jsp/acrl/cssShow.jsp"/>
     </definition>
     
+    <definition name="acrlTool.index" extends="main.index">
+		<put-attribute name="title" value="分录文件下载" />
+		<put-attribute name="main" value="/jsp/acrl/acrlTool.jsp" />
+	</definition>
+	
+	<definition name="unauthorized" extends="main.index">
+		<put-attribute name="title" value="权限管理" />
+		<put-attribute name="main" value="/jsp/unauthorized.jsp" />
+	</definition>
+    
 </tiles-definitions>

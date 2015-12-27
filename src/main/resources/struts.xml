@@ -53,8 +53,7 @@
 		</global-results>
 
 		<global-exception-mappings>
-			<exception-mapping result="unauthorized"
-				exception="org.apache.shiro.authz.UnauthorizedException" />
+			<exception-mapping result="unauthorized" exception="org.apache.shiro.authz.UnauthorizedException" />
 		</global-exception-mappings>
 
 	</package>

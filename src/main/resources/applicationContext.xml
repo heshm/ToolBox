@@ -75,6 +75,7 @@
                 /css/* = anon  
                 /images/* = anon  
                 /login.action* = anon
+                /logout = logout  
                 # some example chain definitions:
                 #/admin/** = authc, roles[admin]
                 #/docs/** = authc, perms[document:read]

@@ -19,12 +19,13 @@ function changeGroup(){
 	$('#sign_up').lightbox_me({
 		centered: true, 
         onLoad: function() { 
-            $('#sign_up').find('input:first').focus()
+           
         }
 	});
 }
 function changeConfirm(){
-	alert("修改成功!")
+	document.groupForm.action="../common/groupChange.action";
+	document.groupForm.submit();
 }
 </script>
 </head>
@@ -39,7 +40,7 @@ function changeConfirm(){
 				<li><s:property value="%{#session.userName}" /></li>
 				<li><a href="">修改密码</a></li>
 				<li><a href="javascript:changeGroup()">设置组别</a></li>
-				<li><a href="">退出</a></li>
+				<li><a href="<%=request.getContextPath()%>/logout">退出</a></li>
 			</ul>
 		</div>
 	</div>
@@ -51,7 +52,9 @@ function changeConfirm(){
 						<span></span>系统工具
 					</h4>
 					<div class="list-item none">
-						<a href=''>分录下载</a> <a href=''>参数下载</a> <a href=''>接口下载</a>
+						<a href='../acrl/acrlToolInit.action'>分录下载</a> 
+						<a href=''>参数下载</a> 
+						<a href=''>接口下载</a>
 					</div>
 				</li>
 				<li>
@@ -170,10 +173,18 @@ function changeConfirm(){
 	<div id="sign_up">
         <h3>请选择一个组别</h3>
         <div id="sign_up_form">
-             <input type="radio" name="txInfo.txTyp" value="K"/>贷款
-             <br/>
-             <input type="radio" name="txInfo.txTyp" value="K"/>活期存款
-            
+            <s:form action="groupChange" namespaces="/common" name="groupForm" method="post">
+            <table>
+                <tbody>
+                <s:iterator var="groups" value="%{#session.groupList}">
+                    <tr>
+                        <td><input type="radio" name="group" value="${groups.groupId}" id="group${groups.groupId}"/></td>
+                        <td><label for="group${groups.groupId}">${groups.groupName}</label> </td>
+                    </tr>
+                </s:iterator>
+                </tbody>
+            </table>
+            </s:form>
         </div>
          <div id="actions">
               <a class="close form_button sprited" id="cancel" href="#">取消</a>

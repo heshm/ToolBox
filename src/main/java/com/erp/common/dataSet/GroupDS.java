@@ -1,5 +1,8 @@
 package com.erp.common.dataSet;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("group")
 public class GroupDS {
 	
 	private String groupId;

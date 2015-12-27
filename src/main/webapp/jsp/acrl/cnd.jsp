@@ -7,7 +7,6 @@
 <s:head/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" type="text/css">
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-2.1.4.js"></script>
 <script type="text/javascript">
 </script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/acrl/cnd.js"></script>
@@ -26,19 +25,19 @@
       </table></td>
       <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="STYLE1"><div align="center"><img src="/ERP/images/001.gif" width="14" height="14" onclick="addRow()"/></div></td>
+            <td class="STYLE1"><div align="center"><img src="<%=request.getContextPath()%>/images/001.gif" width="14" height="14" onclick="addRow()"/></div></td>
             <td class="STYLE1"><div align="center">新增</div></td>
           </tr>
       </table></td>
       <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="STYLE1"><div align="center"><img src="/ERP/images/114.gif" width="14" height="14" onclick="modiRow()"/></div></td>
+            <td class="STYLE1"><div align="center"><img src="<%=request.getContextPath()%>/images/114.gif" width="14" height="14" onclick="modiRow()"/></div></td>
             <td class="STYLE1"><div align="center">修改</div></td>
           </tr>
       </table></td>
       <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="STYLE1"><div align="center"><img src="/ERP/images/083.gif" width="14" height="14" onclick="deleteRow()"/></div></td>
+            <td class="STYLE1"><div align="center"><img src="<%=request.getContextPath()%>/images/083.gif" width="14" height="14" onclick="deleteRow()"/></div></td>
             <td class="STYLE1"><div align="center">删除</div></td>
           </tr>
       </table></td>
