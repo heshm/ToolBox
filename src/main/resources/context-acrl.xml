@@ -52,7 +52,13 @@
 		<property name="iatDAO" ref="iatDAO" />
 	</bean>
 
+    <bean id="cssDAO" class="com.erp.acrl.DAOImpl.CssDAO">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
 
+	<bean id="cssService" class="com.erp.acrl.serviceImpl.CssService">
+		<property name="cssDAO" ref="cssDAO" />
+	</bean>
 
 
 </beans>

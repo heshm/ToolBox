@@ -106,6 +106,15 @@
 		    </result>
 		</action>
 		
+		<action name="cssInit" class="com.erp.acrl.action.CssAction" method="init">
+		    <result name="success" type="tiles">css.index</result>
+		</action>
+		
+		<action name="cssSearch" class="com.erp.acrl.action.CssAction" method="search">
+		    <result name="success" type="tiles">css.index</result>
+		</action>
+		
+		
 		<action name="acrlToolInit" class="com.erp.acrl.action.AcrlToolAction"
 			method="init">
 			<result name="success" type="tiles">acrlTool.index</result>

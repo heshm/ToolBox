@@ -73,6 +73,16 @@
         <association property="glaDS" column="GL_NO" select="common.getOneGla"/>
 	</resultMap>
 	
+	<resultMap id="cssResult" type="css">
+        <id column="FK_GROUPID" jdbcType="CHAR" property="groupId" />
+        <id column="SEQNO" jdbcType="INTEGER" property="seqno" />
+        <result column="BRHNO" jdbcType="CHAR" property="brhno" />
+        <result column="TXID" jdbcType="CHAR" property="txid" />
+        <result column="OLD_CND" jdbcType="CHAR" property="oldCnd" />
+        <result column="NEW_CND" jdbcType="CHAR" property="newCnd" />
+        <result column="STAT" jdbcType="CHAR" property="stat" />
+    </resultMap>
+ 	
 	<sql id="ovtCol">
 	    FK_GROUP_ID,SEQ_NO,OVT_TYP,CND1,CND2,GL_NO,STAT
 	</sql>
@@ -93,6 +103,10 @@
 	
 	<sql id="iatCol" >
         FK_GROUPID, SEQ_NO, GL_NO, CND1, CND2, GL_SEQ_NO, STAT
+    </sql>
+	
+	<sql id="cssCol">
+        FK_GROUPID, SEQNO, BRHNO, TXID, OLD_CND, NEW_CND, STAT
     </sql>
 	
 	<select id="getOvtList" parameterType="java.util.Map" resultMap="ovtResult">
@@ -206,6 +220,13 @@
 	    WHERE FK_GROUPID = #{groupId}
 	    AND FK_TXID = #{txId}
 	    AND FK_ACRLNO = #{seqNo}
+	</select>
+	
+	<select id="getCssList" resultMap="cssResult">
+	    SELECT
+	        <include refid="cssCol"/>
+	    FROM TB_CSS
+	    WHERE FK_GROUPID = #{groupId}
 	</select>
 	
 	<update id="deleteOvt">

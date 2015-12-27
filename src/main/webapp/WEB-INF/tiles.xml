@@ -68,4 +68,9 @@
         <put-attribute name="main" value="/jsp/acrl/iatModi.jsp"/>
     </definition>
     
+    <definition name="css.index" extends="main.index">
+        <put-attribute name="title" value="CSS管理"/>
+        <put-attribute name="main" value="/jsp/acrl/cssShow.jsp"/>
+    </definition>
+    
 </tiles-definitions>

@@ -63,7 +63,7 @@ function changeConfirm(){
 						<a href='../acrl/iatInit.action'>账号序号(IAT)</a> 
 						<a href='javascript:alert("此功能暂未开通!")'>金额设定(AMT)</a>
 						<s:a href="../acrl/ovtInit.action">OVT管理</s:a>
-						<a href=''>CSS管理</a>
+						<a href="../acrl/cssInit.action">CSS管理</a>
 					</div>
 				</li>
 				<!--
