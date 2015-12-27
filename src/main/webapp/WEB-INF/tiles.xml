@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="main.index" template="/jsp/mainlayout.jsp">
+        <!-- 
+        <put-attribute name="title" value="Portlet Tiles FormExample"/>
+        <put-attribute name="header" value="/WEB-INF/tiles/header.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/index.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"/>
+         -->
+        <put-attribute name="title" value="欢迎使用系统"/>
+        <put-attribute name="main" value="/jsp/main.jsp"/>
+    </definition>
+    
+    <definition name="userInfo.index" extends="main.index">
+        <put-attribute name="title" value="用户管理"/>
+        <put-attribute name="main" value="/jsp/common/userInfo.jsp"/>
+    </definition>
+    
+    <definition name="ovt.index" extends="main.index">
+        <put-attribute name="title" value="OVT管理"/>
+        <put-attribute name="main" value="/jsp/acrl/ovt.jsp"/>
+    </definition>
+    
+    <definition name="ovt_modi" extends="main.index">
+        <put-attribute name="title" value="OVT管理"/>
+        <put-attribute name="main" value="/jsp/acrl/ovtModi.jsp"/>
+    </definition>
+    
+    <definition name="txInfo.index" extends="main.index">
+        <put-attribute name="title" value="交易管理(KB AND ONBB)"/>
+        <put-attribute name="main" value="/jsp/common/txinfo.jsp"/>
+    </definition>
+    <definition name="txInfo_modi" extends="main.index">
+        <put-attribute name="title" value="交易修改"/>
+        <put-attribute name="main" value="/jsp/common/txinfoModi.jsp"/>
+    </definition>
+    <definition name="acrl.index" extends="main.index">
+        <put-attribute name="title" value="会计分录管理"/>
+        <put-attribute name="main" value="/jsp/acrl/acrlShow.jsp"/>
+    </definition>
+    <definition name="acrlModi.index" extends="main.index">
+        <put-attribute name="title" value="会计分录修改"/>
+        <put-attribute name="main" value="/jsp/acrl/acrlModi.jsp"/>
+    </definition>
+    
+     <definition name="cnd.index" extends="main.index">
+        <put-attribute name="title" value="CND表管理"/>
+        <put-attribute name="main" value="/jsp/acrl/cnd.jsp"/>
+    </definition>
+    
+     <definition name="art.index" extends="main.index">
+        <put-attribute name="title" value="ART表管理"/>
+        <put-attribute name="main" value="/jsp/acrl/art.jsp"/>
+    </definition>
+    
+    <definition name="iat.index" extends="main.index">
+        <put-attribute name="title" value="IAT表管理"/>
+        <put-attribute name="main" value="/jsp/acrl/iatShow.jsp"/>
+    </definition>
+    
+    <definition name="iatModi.index" extends="main.index">
+        <put-attribute name="title" value="IAT表修改"/>
+        <put-attribute name="main" value="/jsp/acrl/iatModi.jsp"/>
+    </definition>
+    
+</tiles-definitions>

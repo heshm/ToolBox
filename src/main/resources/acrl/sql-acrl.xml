@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="acrl">
+	<resultMap type="ovtDS" id="ovtResult">
+	    <result property="groupId" column="FK_GROUP_ID"/>
+	    <result property="seqNo" column="SEQ_NO"/>
+	    <result property="typ" column="OVT_TYP"/>
+	    <result property="cnd1" column="CND1"/>
+	    <result property="cnd2" column="CND2"/>
+	    <result property="glNo" column="GL_NO"/>
+	    <result property="glName" column="GL_NAME"/>
+	    <result property="stat" column="STAT"/>
+	</resultMap>
+	
+	<resultMap type="acrl" id="acrlResult">
+	    <result property="groupId" column="FK_GROUPID"/>
+	    <result property="txId" column="FK_TX_ID"/>
+	    <result property="seqNo" column="SEQ_NO"/>
+	    <result property="dscrb" column="ACRL_DSCRP"/>
+	    <result property="isValid" column="ISVALID"/>
+	</resultMap>
+	
+	<resultMap type="cnd" id="cndResult">
+	    <result property="groupId" column="FK_GROUPID"/>
+	    <result property="txId" column="FK_TX_ID"/>
+	    <result property="cndNo" column="CND_NO"/>
+	    <result property="seqNo" column="SEQ_NO"/>
+	    <result property="dscrb" column="CND_DSCRB"/>
+	    <result property="cnd1" column="CND1"/>
+	    <result property="cnd2" column="CND2"/>
+	    <result property="cnd3" column="CND3"/>
+	    <result property="cnd4" column="CND4"/>
+	    <result property="cnd5" column="CND5"/>
+	    <result property="cnd6" column="CND6"/>
+	    <result property="cnd7" column="CND7"/>
+	    <result property="cnd8" column="CND8"/>
+	    <result property="cnd9" column="CND9"/>
+	    <result property="cnd10" column="CND10"/>
+	    <result property="cnd11" column="CND11"/>
+	    <result property="cnd12" column="CND12"/>
+	    <result property="cnd13" column="CND13"/>
+	    <result property="cnd14" column="CND14"/>
+	    <result property="cnd15" column="CND15"/>
+	    <result property="cnd16" column="CND16"/>
+	</resultMap>
+	
+	<resultMap type="art" id="artResult">
+	    <result property="groupId" column="FK_GROUPID"/>
+	    <result property="txId" column="FK_TXID"/>
+	    <result property="acrlNo" column="FK_ACRLNO"/>
+	    <result property="seqNo" column="SEQ_NO"/>
+	    <result property="debitOrCredit" column="DEBIT_CREDIT"/>
+	    <result property="glName" column="GLNAME"/>
+	    <result property="glNo" column="GLNO"/>
+	    <result property="account" column="ACCOUNTNO"/>
+	    <result property="amtDscrb" column="AMTDSCRB"/>
+	    <result property="amtPoint" column="AMT_POINT"/>
+	    <result property="glSeqNo" column="GL_SEQNO"/>
+	    <result property="overRide" column="OVERRIDE"/>
+	</resultMap>
+	
+	<resultMap type="iat" id="iatResult">
+	    <id column="FK_GROUPID" property="groupId" jdbcType="CHAR" />
+        <id column="SEQ_NO" property="seqNo" jdbcType="INTEGER" />
+        <result column="GL_NO" property="glNo" jdbcType="CHAR" />
+        <result column="CND1" property="cnd1" jdbcType="CHAR" />
+        <result column="CND2" property="cnd2" jdbcType="CHAR" />
+        <result column="GL_SEQ_NO" property="glSeqNo" jdbcType="CHAR" />
+        <result column="stat" property="stat" jdbcType="CHAR" />
+        <!-- 结果集嵌套查询  -->
+        <association property="glaDS" column="GL_NO" select="common.getOneGla"/>
+	</resultMap>
+	
+	<sql id="ovtCol">
+	    FK_GROUP_ID,SEQ_NO,OVT_TYP,CND1,CND2,GL_NO,STAT
+	</sql>
+	
+	<sql id="acrlCol">
+	    FK_GROUPID,FK_TX_ID,SEQ_NO,ACRL_DSCRP,ISVALID
+	</sql>
+	
+	<sql id="cndCol">
+	    FK_GROUPID, FK_TX_ID, CND_NO, SEQ_NO, CND_DSCRB, CND1, CND2, CND3, CND4, CND5, 
+	    CND6, CND7, CND8, CND9, CND10, CND11, CND12, CND13, CND14, CND15, CND16
+	</sql>
+	
+	<sql id="artCol">
+	    FK_GROUPID, FK_TXID, FK_ACRLNO, SEQ_NO, DEBIT_CREDIT, GLNAME, GLNO, ACCOUNTNO,
+	    AMTDSCRB, AMT_POINT, GL_SEQNO, OVERRIDE
+	</sql>
+	
+	<sql id="iatCol" >
+        FK_GROUPID, SEQ_NO, GL_NO, CND1, CND2, GL_SEQ_NO, STAT
+    </sql>
+	
+	<select id="getOvtList" parameterType="java.util.Map" resultMap="ovtResult">
+	    SELECT
+	      <include refid="ovtCol"/>
+	    FROM TB_OVT
+	    WHERE FK_GROUP_ID = #{groupId}
+	    AND STAT = '1'
+	    <if test="seqNo != null and seqNo > 0">
+	    AND SEQ_NO = #{seqNo}
+	    </if>
+	</select>
+	
+	<select id="getOneOvt" parameterType="ovtDS" resultMap="ovtResult">
+	    SELECT
+	      <include refid="ovtCol"/>
+	    FROM TB_OVT
+	    WHERE FK_GROUP_ID = #{groupId}
+	    AND STAT = '1'
+	    AND SEQ_NO = #{seqNo}
+	</select>
+	
+	<select id="getOneIat" parameterType="iat" resultMap="iatResult">
+	    SELECT
+	        <include refid="iatCol"/>
+	    FROM TB_IAT
+	    WHERE FK_GROUPID = #{groupId,jdbcType=CHAR}
+        and SEQ_NO = #{seqNo,jdbcType=INTEGER}
+	</select>
+	
+	<select id="getOvtSeqNo" resultType="int">
+	    SELECT
+          CASE
+              WHEN MIN(SEQ_NO) IS NULL
+              THEN
+                  (
+                      SELECT
+                          MAX(SEQ_NO) + 1
+                      FROM
+                          TB_OVT
+                      WHERE
+                          FK_GROUP_ID = #{groupId}
+                      AND STAT = '1' )
+              ELSE MIN(SEQ_NO)
+          END SEQ_NO
+      FROM
+          TB_OVT
+      WHERE
+          FK_GROUP_ID = #{groupId}
+      AND STAT = '0'
+	</select>
+	
+	<select id="getIatSeqNo" resultType="int">
+	    SELECT
+        CASE
+            WHEN MIN(SEQ_NO) IS NULL
+            THEN
+                (
+                    SELECT
+                        MAX(SEQ_NO) + 1
+                    FROM
+                        TB_IAT
+                    WHERE
+                        FK_GROUPID = 'LN0'
+                    AND STAT = '1' )
+            ELSE MIN(SEQ_NO)
+        END SEQ_NO
+        FROM
+            TB_IAT
+        WHERE
+            FK_GROUPID = 'LN0'
+        AND STAT = '0'
+	</select>
+	
+	<select id="getAcrlList" resultMap="acrlResult">
+	    SELECT
+	        <include refid="acrlCol"/> 
+	    FROM TB_ACRL
+	    WHERE FK_GROUPID = #{groupId}
+	    AND ISVALID = '1'
+	    <if test="txId != null and txId != ''">
+	        AND FK_TX_ID like CONCAT('%',#{txId},'%')
+	    </if>
+	    <if test="dscrb != null and dscrb != ''">
+	        AND ACRL_DSCRP like CONCAT('%',#{dscrb},'%')
+	    </if>
+	</select>
+	
+	<select id="getOneAcrl" parameterType="acrl" resultMap="acrlResult">
+	    SELECT
+	        <include refid="acrlCol"/> 
+	    FROM TB_ACRL
+	    WHERE FK_GROUPID = #{groupId}
+	    AND FK_TX_ID = #{txId}
+        AND SEQ_NO = #{seqNo}
+	</select>
+	
+	<select id="getCndList" resultMap="cndResult">
+	    SELECT
+	        <include refid="cndCol"/> 
+	    FROM TB_CND
+	    WHERE FK_GROUPID = #{groupId}
+	    AND FK_TX_ID = #{txId}
+	    AND CND_NO = #{cndNo}
+	</select>
+	
+	<select id="getArtList" resultMap="artResult">
+	    SELECT
+	        <include refid="artCol"/> 
+	    FROM TB_ART
+	    WHERE FK_GROUPID = #{groupId}
+	    AND FK_TXID = #{txId}
+	    AND FK_ACRLNO = #{seqNo}
+	</select>
+	
+	<update id="deleteOvt">
+	    UPDATE TB_OVT
+	    SET STAT = '0'
+	    WHERE FK_GROUP_ID = #{groupId}
+	    AND SEQ_NO = #{seqNo}
+	</update>
+	
+	<insert id="inserOvt">
+	    INSERT INTO TB_OVT(
+	    <include refid="ovtCol"/>)
+	    VALUES
+	   (#{groupId},
+	    #{seqNo},
+	    #{typ},
+	    #{cnd1},
+	    #{cnd2},
+	    #{glNo},
+	    #{stat})
+	    ON DUPLICATE KEY UPDATE
+	    OVT_TYP = #{typ},
+	    CND1 = #{cnd1},
+	    CND2 = #{cnd2},
+	    GL_NO = #{glNo},
+	    STAT = #{stat}
+	</insert>
+	
+	<insert id="insertAcrl">
+	    INSERT INTO TB_ACRL(
+	    <include refid="acrlCol"/>) 
+	    VALUES
+	   (#{groupId},
+	    #{txId},
+	    #{seqNo},
+	    #{dscrb},
+	    #{isValid})
+	    ON DUPLICATE KEY UPDATE
+	    ACRL_DSCRP = #{dscrb},
+	    ISVALID = #{isValid}
+	</insert>
+	
+	<insert id="insertCndList">
+	    INSERT INTO TB_CND (
+	    <include refid="cndCol"/>) VALUES
+	    <foreach item="item" index="index" collection="cndList" separator=",">
+	       (#{item.groupId},
+	        #{item.txId},   
+	        #{item.cndNo}, 
+	        #{item.seqNo}, 
+	        #{item.dscrb}, 
+	        #{item.cnd1}, 
+	        #{item.cnd2}, 
+	        #{item.cnd3}, 
+	        #{item.cnd4}, 
+	        #{item.cnd5}, 
+	        #{item.cnd6}, 
+	        #{item.cnd7}, 
+	        #{item.cnd8}, 
+	        #{item.cnd9}, 
+	        #{item.cnd10}, 
+	        #{item.cnd11}, 
+	        #{item.cnd12},  
+	        #{item.cnd13},  
+	        #{item.cnd14},  
+	        #{item.cnd15},  
+	        #{item.cnd16})
+	    </foreach>
+	</insert>
+	
+	<insert id="insertArtList">
+	    INSERT INTO TB_ART(
+	    <include refid="artCol"/>)VALUES
+	    <foreach item="item" index="index" collection="artList" separator=",">
+	       (#{item.groupId},
+	        #{item.txId},   
+	        #{item.acrlNo}, 
+	        #{item.seqNo}, 
+	        #{item.debitOrCredit}, 
+	        #{item.glName}, 
+	        #{item.glNo}, 
+	        #{item.account}, 
+	        #{item.amtDscrb}, 
+	        #{item.amtPoint}, 
+	        #{item.glSeqNo}, 
+	        #{item.overRide})
+	    </foreach>
+	</insert>
+	
+	<insert id="insertIat" parameterType="iat" >
+        INSERT INTO TB_IAT (
+        <include refid="iatCol"/>)
+        VALUES (
+          #{groupId,jdbcType=CHAR}, 
+          #{seqNo,jdbcType=INTEGER}, 
+          #{glNo,jdbcType=CHAR}, 
+          #{cnd1,jdbcType=CHAR}, 
+          #{cnd2,jdbcType=CHAR}, 
+          #{glSeqNo,jdbcType=CHAR}, 
+          #{stat,jdbcType=CHAR}
+        ) ON DUPLICATE KEY UPDATE
+        GL_NO = #{glNo,jdbcType=CHAR},
+        CND1 = #{cnd1,jdbcType=CHAR}, 
+        CND2 = #{cnd2,jdbcType=CHAR}, 
+        GL_SEQ_NO = #{glSeqNo,jdbcType=CHAR}, 
+        STAT = #{stat,jdbcType=CHAR}
+  </insert>
+	
+	<delete id="deleteCnd">
+	    DELETE FROM TB_CND
+	    WHERE FK_GROUPID = #{groupId}
+	    AND FK_TX_ID = #{txId}
+	    AND CND_NO = #{cndNo}  
+	</delete>
+	
+	<delete id="deleteArt">
+	    DELETE FROM TB_ART
+	    WHERE FK_GROUPID = #{groupId}
+	    AND FK_TXID = #{txId}
+	    AND FK_ACRLNO = #{acrlNo}  
+	</delete>
+</mapper>

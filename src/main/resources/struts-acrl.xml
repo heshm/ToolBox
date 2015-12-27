@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <package name="acrl" namespace="/acrl" extends="init-default">
+        <!-- Ovt管理 -->
+        <action name="ovtInit" class="com.erp.acrl.action.OvtAction" method="init">
+			<result name="success" type="redirectAction">
+			    <param name="namespace">/acrl</param>
+			    <param name="actionName">ovt_query</param> 
+			</result>
+		</action>
+		
+	    <action name="ovt_query" class="com.erp.acrl.action.OvtAction" method="ovt_query">
+			<result name="success" type="tiles">ovt.index</result>
+		</action>
+		
+	    <action name="ovt_query_next" class="com.erp.acrl.action.OvtAction" method="ovt_query_next">
+			<result name="success" type="tiles">ovt.index</result>
+		</action>
+		
+		<action name="ovt_query_pre" class="com.erp.acrl.action.OvtAction" method="ovt_query_pre">
+			<result name="success" type="tiles">ovt.index</result>
+		</action>
+		
+		<action name="ovt_delete" class="com.erp.acrl.action.OvtAction" method="ovt_delete">
+			<result name="success" type="tiles">ovt.index</result>
+		</action>
+		
+		<action name="ovt_modi" class="com.erp.acrl.action.OvtAction" method="ovt_modi">
+			<result name="success" type="tiles">ovt_modi</result>
+		</action>
+		
+		<action name="ovt_update" class="com.erp.acrl.action.OvtAction" method="ovt_update">
+			<result name="success" type="tiles">ovt.index</result>
+		</action>
+		
+		<!-- acrl管理 -->
+		<action name="acrlInit" class="com.erp.acrl.action.AcrlAction" method="init">
+		    <result name="success" type="tiles">acrl.index</result>
+		</action>
+		<action name="acrlSearch" class="com.erp.acrl.action.AcrlAction" method="search">
+		    <result name="success" type="tiles">acrl.index</result>
+		</action>
+		<action name="acrlGoBack" class="com.erp.acrl.action.AcrlAction" method="goBack">
+		    <result name="success" type="redirectAction">
+			    <param name="namespace">/common</param>
+			    <param name="actionName">mainFrame</param> 
+			</result>
+		</action>
+		
+		<action name="acrlModiInit" class="com.erp.acrl.action.AcrlModiAction" method="init">
+		    <result name="success" type="tiles">acrlModi.index</result>
+		</action>
+		
+		<action name="acrlModi" class="com.erp.acrl.action.AcrlModiAction" method="modi">
+		    <result name="success" type="tiles">acrlModi.index</result>
+		</action>
+		
+		<action name="acrlModiGoBack" class="com.erp.acrl.action.AcrlModiAction" method="goback">
+		    <result name="success" type="redirectAction">
+			    <param name="namespace">/acrl</param>
+			    <param name="actionName">acrlInit</param> 
+			</result>
+		</action>
+		
+		<action name="cndInit" class="com.erp.acrl.action.CndAction" method="init">
+		    <result name="success" type="tiles">cnd.index</result>
+		</action>
+		
+		<action name="cndModi" class="com.erp.acrl.action.CndAction" method="cndModi">
+		    <result name="success" type="tiles">cnd.index</result>
+		</action>
+		
+		<action name="artInit" class="com.erp.acrl.action.ArtAction" method="init">
+		    <result name="success" type="tiles">art.index</result>
+		</action>
+		
+		<action name="artModi" class="com.erp.acrl.action.ArtAction" method="modi">
+		    <result name="success" type="tiles">art.index</result>
+		</action>
+		
+		<action name="iatInit" class="com.erp.acrl.action.IatAction" method="init">
+		    <result name="success" type="redirectAction">
+		        <param name="namespace">/acrl</param>
+			    <param name="actionName">iatSearch</param> 
+		    </result>
+		</action>
+		
+		<action name="iatSearch" class="com.erp.acrl.action.IatAction" method="search">
+		    <result name="success" type="tiles">iat.index</result>
+		</action>
+		
+		<action name="iatModiInit" class="com.erp.acrl.action.IatModiAction" method="init">
+		    <result name="success" type="tiles">iatModi.index</result>
+		</action>
+		
+		<action name="iatModi" class="com.erp.acrl.action.IatModiAction" method="modi">
+		    <result name="success" type="redirectAction">
+		        <param name="namespace">/acrl</param>
+		        <param name="actionName">iatSearch</param>
+		        <param name="cnd1">${cnd1}</param>
+		        <param name="cnd2">${cnd2}</param>
+		        <param name="glNo">${glNo}</param>
+		    </result>
+		</action>
+		
+		<action name="acrlToolInit" class="com.erp.acrl.action.AcrlToolAction"
+			method="init">
+			<result name="success" type="tiles">acrlTool.index</result>
+		</action>
+		
+		<action name="downLoad" class="com.erp.acrl.action.AcrlToolAction"
+			method="downLoad">
+			<result name="downLoadArt" type="stream">
+			    <param name="contentType">application/octet-stream</param>
+			    <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">4096</param>
+			</result>
+		</action>
+		
+		<action name="getAcrl" class="com.erp.acrl.action.AcrlToolAction"
+			method="genAcrl">
+			
+			<result name="success" type="redirectAction">
+				<param name="namespace">/acrl</param>
+				<param name="actionName">downLoad</param>
+				<param name="typ">${typ}</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

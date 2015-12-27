@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="ovtDAO" class="com.erp.acrl.DAOImpl.OvtDAO">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+
+	<bean id="ovtService" class="com.erp.acrl.serviceImpl.OvtService">
+		<property name="ovtDAO" ref="ovtDAO" />
+	</bean>
+
+	<bean id="acrlDAO" class="com.erp.acrl.DAOImpl.AcrlDAO">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+
+	<bean id="acrlService" class="com.erp.acrl.serviceImpl.AcrlService">
+		<property name="acrlDAO" ref="acrlDAO" />
+	</bean>
+
+	<bean id="cndDAO" class="com.erp.acrl.DAOImpl.CndDAO">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+
+	<bean id="cndService" class="com.erp.acrl.serviceImpl.CndService">
+		<property name="cndDAO" ref="cndDAO" />
+	</bean>
+
+	<bean id="artDAO" class="com.erp.acrl.DAOImpl.ArtDAO">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+
+	<bean id="artService" class="com.erp.acrl.serviceImpl.ArtService">
+		<property name="artDAO" ref="artDAO" />
+	</bean>
+
+	<bean id="iatDAO" class="com.erp.acrl.DAOImpl.IatDAO">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+
+	<bean id="iatService" class="com.erp.acrl.serviceImpl.IatService">
+		<property name="iatDAO" ref="iatDAO" />
+	</bean>
+
+
+
+
+</beans>

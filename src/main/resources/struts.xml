@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+
+	<package name="init" namespace="/" extends="struts-default">
+		<action name="init" class="com.erp.common.action.LoginAction"
+			method="init">
+			<result name="success">/jsp/login.jsp</result>
+		</action>
+		<action name="login" class="com.erp.common.action.LoginAction"
+			method="login">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/common</param>
+				<param name="actionName">mainFrame</param>
+			</result>
+			<result name="error">/jsp/login.jsp</result>
+		</action>
+
+		<!-- <action name="formTest" class="com.erp.init.TestAction" method="init"> 
+			<result name="success">/jsp/test.jsp</result> </action> <action name="testmodi" 
+			class="com.erp.init.TestAction" method="modi"> <result name="success">/jsp/test.jsp</result> 
+			</action> -->
+	</package>
+
+	<package name="init-default" extends="tiles-default">
+		<interceptors>
+			<!--<interceptor name="login" class="com.erp.interceptor.LoginInterceptor"/> -->
+
+			<interceptor-stack name="loginAndAuthentication">
+				<!-- <interceptor-ref name="login"/> -->
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="loginAndAuthentication" />
+
+		<global-results>
+			<result name="login" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">init</param>
+			</result>
+			<result name="unauthorized" type="redirectAction">
+				<param name="namespace">/common</param>
+				<param name="actionName">unauth</param>
+			</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping result="unauthorized"
+				exception="org.apache.shiro.authz.UnauthorizedException" />
+		</global-exception-mappings>
+
+	</package>
+
+	<include file="struts-common.xml" />
+
+	<include file="struts-acrl.xml" />
+
+</struts>

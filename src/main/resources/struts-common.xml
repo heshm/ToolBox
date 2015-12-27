@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="common" namespace="/common" extends="init-default">
+
+
+		<action name="mainFrame" class="com.erp.common.action.MainFrameAction"
+			method="init">
+			<result name="success" type="tiles">main.index</result>
+			<result name="error">/jsp/error.jsp</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+		<action name="unauth" class="com.erp.common.action.MainFrameAction"
+			method="unauth">
+			<result name="success" type="tiles">unauthorized</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+
+		<action name="user_query" class="com.erp.common.action.UserAction"
+			method="user_query">
+			<result name="success" type="tiles">userInfo.index</result>
+		</action>
+
+		<action name="user_delete" class="com.erp.common.action.UserAction"
+			method="user_delete">
+			<result name="success" type="tiles">userInfo.index</result>
+		</action>
+
+		<action name="txInfoInit" class="com.erp.common.action.TxInfoAction"
+			method="init">
+			<result name="success" type="tiles">txInfo.index</result>
+		</action>
+
+		<action name="txInfoQuery" class="com.erp.common.action.TxInfoAction"
+			method="txInfo_query">
+			<result name="success" type="tiles">txInfo.index</result>
+		</action>
+
+		<action name="txinfoModi" class="com.erp.common.action.TXInfoModiAction"
+			method="init">
+			<result name="success" type="tiles">txInfo_modi</result>
+		</action>
+		<action name="txinfoUpdate" class="com.erp.common.action.TXInfoModiAction"
+			method="txInfo_update">
+			<result name="success" type="tiles">txInfo.index</result>
+		</action>
+		<action name="txinfo_insert" class="com.erp.common.action.TXInfoModiAction"
+			method="txInfo_insert">
+			<result name="success" type="tiles">txInfo_modi</result>
+		</action>
+	</package>
+</struts>
