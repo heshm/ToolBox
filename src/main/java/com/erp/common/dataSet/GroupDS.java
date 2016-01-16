@@ -1,9 +1,11 @@
 package com.erp.common.dataSet;
 
+import java.io.Serializable;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("group")
-public class GroupDS {
+public class GroupDS implements Serializable{
 	
 	private String groupId;
 	private String groupName;

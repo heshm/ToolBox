@@ -35,4 +35,10 @@ public class CndService implements ICndService {
 		return cndDAO.insertCndList(map);
 	}
 
+	@Override
+	public List<CndDS> getVwCnd(String string) {
+		// TODO Auto-generated method stub
+		return cndDAO.getVwCnd(string);
+	}
+
 }

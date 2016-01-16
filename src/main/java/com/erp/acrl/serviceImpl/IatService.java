@@ -1,5 +1,7 @@
 package com.erp.acrl.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import com.erp.acrl.IDAO.IIatDAO;
@@ -35,6 +37,12 @@ public class IatService implements IIatService {
 	public int insertIat(IatDS iatDS) {
 		// TODO Auto-generated method stub
 		return iatDAO.insertIat(iatDS);
+	}
+
+	@Override
+	public List<IatDS> getIatList(String groupId) {
+		// TODO Auto-generated method stub
+		return iatDAO.getIatList(groupId);
 	}
 
 }

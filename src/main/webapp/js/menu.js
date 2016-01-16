@@ -18,6 +18,8 @@ function navList(id) {
         $(this).removeClass("hover");
     });
     $obj.find("h4").click(function () {
+    	var menu = $.trim($(this).text());
+    	$("#l1_menu").html(menu);
         var $div = $(this).siblings(".list-item");
         if ($(this).parent().hasClass("selected")) {
             $div.slideUp(600);

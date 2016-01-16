@@ -11,6 +11,9 @@ public class ColName implements Serializable {
 	private String tbName;
 	private String colId;
 	private String name;
+	private Short cndLen;
+	private String cndSource;
+	private String cndSourceNo;
 	
 	public String getGroupId() {
 		return groupId;
@@ -35,6 +38,24 @@ public class ColName implements Serializable {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public Short getCndLen() {
+		return cndLen;
+	}
+	public void setCndLen(Short cndLen) {
+		this.cndLen = cndLen;
+	}
+	public String getCndSource() {
+		return cndSource;
+	}
+	public void setCndSource(String cndSource) {
+		this.cndSource = cndSource;
+	}
+	public String getCndSourceNo() {
+		return cndSourceNo;
+	}
+	public void setCndSourceNo(String cndSourceNo) {
+		this.cndSourceNo = cndSourceNo;
 	}
 	
 }

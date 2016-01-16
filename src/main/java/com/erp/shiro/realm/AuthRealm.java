@@ -45,7 +45,7 @@ public class AuthRealm extends AuthorizingRealm{
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) 
 			throws AuthenticationException {
-		System.out.println("Go here 1");
+		//System.out.println("Go here 1");
 		Subject subject = SecurityUtils.getSubject();
 		Session session = subject.getSession();
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;

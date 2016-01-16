@@ -1,9 +1,5 @@
 package com.erp.common.action;
 
-import java.util.Map;
-
-
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -15,6 +11,7 @@ import com.erp.common.dataSet.UserInfo;
 import com.erp.common.util.Const;
 import com.opensymphony.xwork2.ActionSupport;
 
+@SuppressWarnings("serial")
 public class InitAction extends ActionSupport{
 	
 	private UserInfo userinfo;

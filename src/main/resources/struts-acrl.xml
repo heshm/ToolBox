@@ -122,7 +122,7 @@
 		
 		<action name="downLoad" class="com.erp.acrl.action.AcrlToolAction"
 			method="downLoad">
-			<result name="downLoadArt" type="stream">
+			<result name="success" type="stream">
 			    <param name="contentType">application/octet-stream</param>
 			    <param name="inputName">inputStream</param>
                 <param name="contentDisposition">attachment;filename="${fileName}"</param>
@@ -132,7 +132,6 @@
 		
 		<action name="getAcrl" class="com.erp.acrl.action.AcrlToolAction"
 			method="genAcrl">
-			
 			<result name="success" type="redirectAction">
 				<param name="namespace">/acrl</param>
 				<param name="actionName">downLoad</param>

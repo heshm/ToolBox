@@ -62,6 +62,11 @@ public class MainFrameAction extends CommonAction{
 	@SuppressWarnings("unchecked")
 	public String groupChg(){
 		session.replace("groupId", group);
+		Map<String,String> map = new HashMap<String,String>();
+		map.put(Const.GROUPID, CommonUtil.getGroupId(session));
+		map.put("tbName", Const.CND);
+		List<ColName> cndColName = colNameService.getColNameList(map);
+		session.replace(Const.CND_COL_NAME, cndColName);
 		this.addActionMessage("组别修改成功!");
 		return SUCCESS;
 	}

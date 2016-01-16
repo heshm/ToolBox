@@ -18,10 +18,13 @@
     </resultMap>
 	
 	<resultMap type="colName" id="colNameResult">
-	    <result property="groupId" column="FK_GROUPID"/>
-	    <result property="tbName" column="TBNAME"/>
-	    <result property="colId" column="COLID"/>
+	    <id property="groupId" column="FK_GROUPID"/>
+	    <id property="tbName" column="TBNAME"/>
+	    <id property="colId" column="COLID"/>
 	    <result property="name" column="NAME"/>
+	    <result column="CND_LEN" property="cndLen" jdbcType="SMALLINT" />
+        <result column="CND_DOURCE" property="cndSource" jdbcType="CHAR" />
+        <result column="CND_DOURCE_NO" property="cndSourceNo" jdbcType="CHAR" />
 	</resultMap>
 	
 	<resultMap type="TXInfo" id="TXInfoResult">
@@ -46,7 +49,7 @@
 	</sql>
 	
 	<sql id="colNameCol">
-	    FK_GROUPID,TBNAME,COLID,NAME
+	    FK_GROUPID,TBNAME,COLID,NAME,CND_LEN,CND_SOURCE,CND_SOURCE_NO
 	</sql>
 	
 	<sql id="groupCol">

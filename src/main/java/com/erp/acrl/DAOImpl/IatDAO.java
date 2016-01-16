@@ -1,5 +1,7 @@
 package com.erp.acrl.DAOImpl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.erp.acrl.IDAO.IIatDAO;
@@ -10,6 +12,7 @@ public class IatDAO implements IIatDAO {
 	private static final String GET_ONE_IAT = "getOneIat";
 	private static final String GET_IAT_SEQ = "getIatSeqNo";
 	private static final String INSERT_IAT = "insertIat";
+	private static final String GET_IAT_LIST = "getIatList";
 	
 	private SqlSession sqlSession;
 
@@ -37,6 +40,12 @@ public class IatDAO implements IIatDAO {
 	public int insertIat(IatDS iatDS) {
 		// TODO Auto-generated method stub
 		return sqlSession.insert(INSERT_IAT, iatDS);
+	}
+
+	@Override
+	public List<IatDS> getIatList(String groupId) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(GET_IAT_LIST, groupId);
 	}
 
 }

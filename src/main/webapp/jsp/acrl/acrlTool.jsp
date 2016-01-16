@@ -20,19 +20,19 @@
     </tr>
     <tr>
       <td><s:property value="%{#session.groupId}"/>CND</td>
-      <td><a href="downLoad">下载</a></td>
+      <td><a href="getAcrl.action?typ=CND">下载</a></td>
     </tr>
     <tr>
       <td><s:property value="%{#session.groupId}"/>OVT</td>
-      <td><a href="downLoad">下载</a></td>
+      <td><a href="getAcrl.action?typ=OVT">下载</a></td>
     </tr>
     <tr>
       <td><s:property value="%{#session.groupId}"/>IAT</td>
-      <td><a href="downLoad">下载</a></td>
+      <td><a href="getAcrl.action?typ=IAT">下载</a></td>
     </tr>
     <tr>
       <td><s:property value="%{#session.groupId}"/>CSS</td>
-      <td><a href="downLoad">下载</a></td>
+      <td><a href="getAcrl.action?typ=CSS">下载</a></td>
     </tr>
   </table>
 </div>

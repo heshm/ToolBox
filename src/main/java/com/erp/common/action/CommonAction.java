@@ -11,6 +11,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.erp.common.IService.IPageService;
 import com.opensymphony.xwork2.ActionSupport;
 
+@SuppressWarnings("serial")
 public abstract class CommonAction<T> extends ActionSupport
 		implements SessionAware, ServletRequestAware, ServletResponseAware {
 

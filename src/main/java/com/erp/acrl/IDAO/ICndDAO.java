@@ -12,5 +12,7 @@ public interface ICndDAO {
 	public abstract int deleteCnd(Map map);
 	
 	public abstract int insertCndList(Map map);
+	
+	public abstract List<CndDS> getVwCnd(String string);
 
 }

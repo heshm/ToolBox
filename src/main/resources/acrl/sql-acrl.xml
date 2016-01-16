@@ -137,6 +137,14 @@
         and SEQ_NO = #{seqNo,jdbcType=INTEGER}
 	</select>
 	
+	<select id="getIatList" resultMap="iatResult">
+	    SELECT
+	        <include refid="iatCol"/>
+	    FROM TB_IAT
+	    WHERE FK_GROUPID = #{groupId,jdbcType=CHAR}
+        ORDER BY SEQ_NO
+	</select>
+	
 	<select id="getOvtSeqNo" resultType="int">
 	    SELECT
           CASE
@@ -249,6 +257,34 @@
 	       OVERRIDE
 	    FROM VW_GENART
 	    WHERE FK_GROUPID = #{groupId}
+	</select>
+	
+	<select id="genCndList" resultMap="cndResult">
+	    SELECT
+            FK_GROUPID,
+            FK_TX_ID,
+            CND_NO,
+            SEQ_NO,
+            CND_DSCRB,
+            CND1,
+            CND2,
+            CND3,
+            CND4,
+            CND5,
+            CND6,
+            CND7,
+            CND8,
+            CND9,
+            CND10,
+            CND11,
+            CND12,
+            CND13,
+            CND14,
+            CND15,
+            CND16
+        FROM
+            VW_GENCND
+        WHERE FK_GROUPID = #{groupId}
 	</select>
 	
 	<update id="deleteOvt">

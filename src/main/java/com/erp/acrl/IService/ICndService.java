@@ -10,5 +10,7 @@ public interface ICndService {
 	public abstract List<CndDS> getCndList(Map map);
 	
 	public abstract int modiCnd(Map map);
+	
+	public abstract List<CndDS> getVwCnd(String string);
 
 }

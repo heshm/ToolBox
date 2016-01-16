@@ -9,6 +9,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>欢迎登陆系统</title>
   <link rel="stylesheet" href="<%=request.getContextPath()%>/css/login.css" type="text/css"> 
+  <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-2.1.4.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+	    $("input[name=userName]").focus();
+	});
+  </script>
 <head>
 <body>
 

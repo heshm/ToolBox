@@ -15,6 +15,15 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/menu.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.lightbox_me.js"></script>
 <script type="text/javascript">
+$(document).ready(function(){
+	$("a").each(function(){
+		$(this).click(function(){
+			var text = $(this).text();
+			$("#l2_menu").html(text);
+		});}
+	);
+	
+});
 function changeGroup(){
 	$('#sign_up').lightbox_me({
 		centered: true, 
@@ -149,9 +158,9 @@ function changeConfirm(){
 					    <img src="<%=request.getContextPath()%>/images/home.png" style="margin:0px auto;">
 					</li>
 					<li style="margin-left:25px;">您当前的位置：</li>
-					<li><a href="#">系统公告</a></li>
+					<li id="l1_menu">系统公告</li>
 					<li>></li>
-					<li><a href="#">最新公告</a></li>
+					<li id="l2_menu"><a href="#">最新公告</a></li>
 				</ul>
 			</div>
 			<div class="main">
